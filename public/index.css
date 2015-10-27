@@ -9,14 +9,37 @@ section:nth-child(1){
   color:white;
   position:relative;
 }
-section:nth-child(1) h1{
+section:nth-child(1) div:nth-child(1){
   margin:0;
-  display:inline-block;
-  color:#2c3e50;
-  background:white;
-  padding:10px;
-  font-size:50px;
   position:absolute;
-  top:45%;
-  left:30%;
+  top:30%;
+  width:100%;
+  text-align:center;
+}
+section:nth-child(1) div:nth-child(1) span{
+  padding:50px 20px;
+  color:white;
+  font-weight:bold;
+  display:inline-block;
+  width:80%;
+  font-size:100px;
+}
+section:nth-child(1) div:nth-child(2){
+   position:absolute; 
+   top:55%;
+   width:100%;
+   
+}
+section:nth-child(1) div:nth-child(2) span{
+  width:30%;
+  display:inline-block;
+  background:white;
+  color:#2c3e50;
+  height:50px;
+  margin:0 25px;
+  font-size:45px;
+  font-weight:bold;
+  padding:20px;
+  box-shadow: green 2px 2px 8px;
+  cursor:pointer;
 }
