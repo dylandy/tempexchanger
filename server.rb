@@ -6,8 +6,8 @@ get '/' do
   redirect '/index.html'
 end
 get "/kelvin-to-celsius/:name" do
-    #(params[:name].to_f - 272.15).round(2).to_s
-    { "kelvin" => params[:name].to_f.round(2).to_s , "celsius" => (params[:name].to_f - 272.15).round(2).to_s }.to_json 
+    (params[:name].to_f - 272.15).round(2).to_s
+    #{ "kelvin" => params[:name].to_f.round(2).to_s , "celsius" => (params[:name].to_f - 272.15).round(2).to_s }.to_json 
 end
 
 get "/celsius-to-kelvin/:name" do

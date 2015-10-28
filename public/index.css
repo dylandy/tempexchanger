@@ -43,3 +43,13 @@ section:nth-child(1) div:nth-child(2) span{
   box-shadow: green 2px 2px 8px;
   cursor:pointer;
 }
+section:nth-child(2){
+  background:#fbfbfb;
+  color:black;
+}
+section:nth-child(2) div:nth-child(1){
+  text-indent:10%;
+  font-size:40px;
+  font-weight:bold;
+  padding-top:5%;
+}
