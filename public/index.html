@@ -8,15 +8,77 @@
   <body>
     <section>
       <div><span>TempExchange API</span></div>
-      <div><span>Github</span><span>Get Started</span></div>
+      <!-- open a new window or tab for github page -->
+      <div><span onclick="window.open('https://github.com/dylandy/tempexchanger');">Github</span><span>Get Started</span></div>
     </section>
     <section>
       <div><span>Get Started</span></div>
-      <div>
-
+      <div class="content">
+        <p>You can download the project to deploy yourself or you can simply use the api deploy by others :p</p>
+        <h3>How To Deploy</h3>
+        <p>
+          The programme can only deploy and use under Unix-like system (sorry windows) due to the gems (or libraries) used in the project.
+          The following requirement is essential for this project.
+        </p>
+          <h4>Requirements</h4>
+          <p>This project was developed and tested under the following elements. If you can deploy this project other than these elements, please let me know.</p>
+            <ul>
+              <li>Unix-like system</li>
+              <li>Ruby</li>
+              <li>Sinatra</li>
+              <li>Nokogiri</li>
+            </ul>
+            <p> After you install all the dependencies and you can download project <a href="https://github.com/dylandy/tempexchanger">here</a> and launch the service for temperature exchange service.</p>
+            <h4>How To Use</h4>
+            <p>
+              This api service support four different temperature formats to switch from each other. The current supported formats are "celsius", "fahrenheit", "kelvin" and "reaumur".
+              The return format could be with three different kinds in "plain text", "json" and "xml". Please follow the rule below to use get the data.
+            </p>
+              <ul>
+                <li class="demo">http://.../[:temperture-format]-to-[:temperture-format]/[:degree]/[:output-format]</li>
+              </ul>
+              <h4>Explanation</h4>
+              <table>
+                <tr><td>temperture-format</td><td>kelvin, fahrenheit, celsius, reaumur</td></tr> 
+                <tr><td>degree</td><td>float or integer number</td></tr>
+                <tr><td>output-format</td><td>null, json, xml</td></tr>
+              </table>
+              <p> <b>Notice:If you want to output plain text, please just leave the output format blank.</b></p>
+              <h4>Demo</h4>
+              <p>transfer from:</p>
+              <select>
+                <option value="kelvin">kelvin</option>
+                <option value="celsius">celsius</option>
+                <option value="fahrenheit">fahrenheit</option>
+                <option value="reaumur">reaumur</option>
+              </select>
+              <p>transfer to:</p>
+              <select>
+                <option value="kelvin">kelvin</option>
+                <option value="celsius">celsius</option>
+                <option value="fahrenheit">fahrenheit</option>
+                <option value="reaumur">reaumur</option>
+              </select>
+              <p>original degree</p>
+              <input type="number">
+              <p>output format of:</p>
+              <select>
+                <option value="text">plain text</option>
+                <option value="json">json</option>
+                <option value="xml">xml</option>
+              </select>
+              <br>
+              <br>
+              <button>see the demo</button>
+              <br><br><br>
+              <iframe ></iframe>
+              <p><b>Noitce: xml format would be render into html in iframe, you can simply see all the elements in developer console.</b></p>
       </div>
     </section>
-    <section></section>
+    <section>
+      <p>All right reserved @Dylandy Chang 2015</p>
+      <p>This API is release under MIT LICENSE.</p>
+    </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="index.js"></script>
   </body>
