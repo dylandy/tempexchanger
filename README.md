@@ -5,21 +5,34 @@ support temperature format :  "celsius" , "kelvin" , "fahrenheit" , "Réaumur"
 
 ##Deploy
 
-###Requirement
+###Requirement & Dependencies
  
 This application was developped under the following dependencies programmes and go through testing
 
 * Ruby , >= 2.1.5
-* Sinatra , >= 1.4.6 
+* Sinatra , >= 1.4.6
+* Nokogiri , 1.6.6 
 * Unix-like system
 
 ##Get Started
   
-  To start server, please type in the following command in command line prompt.
+  To start server in default mode at port 4567
+  
   ```
    ruby server.rb
   ```
-  To stop the server, simply use control-c to stop the server.
+  
+  To start server at different port
+  
+  ```
+   ruby server.rb -p [port number]
+  ```
+  
+  Use Ctrl+C (^C) to stop the server.
+  
+  ```
+   Ctrl + c 
+  ```
 
 ##GUI Document
 
