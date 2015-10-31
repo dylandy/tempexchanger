@@ -1,6 +1,7 @@
 #TempExchanger
 
-This is a simple temperature exchanger restful api provide both string and json format
+This is a simple temperature exchanger restful api provide string, json and xml format
+support temperature format :  "celsius" , "kelvin" , "fahrenheit" , "Réaumur"
 
 ##Deploy
 

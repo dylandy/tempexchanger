@@ -10,13 +10,13 @@ end
 
 get "/kelvin-to-celsius/:name/?:format?" do
    unless params[:format] 
-    (params[:name].to_f - 272.15).round(2).to_s
+    (params[:name].to_f - 273.15).round(2).to_s
    else
      if params[:format] == "json"
-       { "from_kelvin" => params[:name].to_f.round(2).to_s , "to_celsius" => (params[:name].to_f - 272.15).round(2).to_s }.to_json 
+       { "from_kelvin" => params[:name].to_f.round(2).to_s , "to_celsius" => (params[:name].to_f - 273.15).round(2).to_s }.to_json 
      else params[:format] == "xml"
        
-       output = { "from_kelvin" => params[:name].to_f.round(2).to_s , "to_celsius" => (params[:name].to_f - 272.15).round(2).to_s }
+       output = { "from_kelvin" => params[:name].to_f.round(2).to_s , "to_celsius" => (params[:name].to_f - 273.15).round(2).to_s }
        builder = Nokogiri::XML::Builder.new do |xml|
          xml.response do
            xml.from_kelvin output["from_kelvin"]
@@ -33,12 +33,12 @@ end
 
 get "/celsius-to-kelvin/:name/?:format?" do
   unless params[:format]
-    (params["name"].to_f + 272.15).round(2).to_s
+    (params["name"].to_f + 273.15).round(2).to_s
   else
     if params[:format] == "json"
-      {"from_celsius" => params[:name].to_f.round(2).to_s , "to_kelvin" => (params["name"].to_f + 272.15).round(2).to_s}.to_json
+      {"from_celsius" => params[:name].to_f.round(2).to_s , "to_kelvin" => (params["name"].to_f + 273.15).round(2).to_s}.to_json
     elsif params[:format] == "xml"
-      output = { "from_celsius" => params[:name].to_f.round(2).to_s , "to_kelvin" => (params["name"].to_f + 272.15).round(2).to_s }
+      output = { "from_celsius" => params[:name].to_f.round(2).to_s , "to_kelvin" => (params["name"].to_f + 273.15).round(2).to_s }
        builder = Nokogiri::XML::Builder.new do |xml|
          xml.response do
            xml.from_celsius output["from_celsius"]
@@ -131,6 +131,131 @@ get "/fahrenheit-to-kelvin/:name/?:format?" do
          xml.response do
            xml.from_fahrenheit output["from_fahrenheit"]
            xml.to_kelvin output["to_kelvin"]
+         end 
+       end
+        
+       content_type "text/xml"
+       builder.to_xml.to_s
+    end
+  end
+end
+
+get "/reaumur-to-kelvin/:name/?:format?" do
+  unless params[:format]
+    ((((params[:name].to_f)*5)/4.0) + 273.15).round(2).to_s
+  else
+    if params[:format] == "json"
+      {"from_reaumur" => params[:name].to_f.round(2).to_s , "to_kelvin" => ((((params[:name].to_f)*5)/4.0) + 273.15).round(2).to_s }.to_json
+    elsif params[:format] == "xml"
+      output = {"from_reaumur" => params[:name].to_f.round(2).to_s , "to_kelvin" => ((((params[:name].to_f)*5)/4.0) + 273.15).round(2).to_s }
+      builder = Nokogiri::XML::Builder.new do |xml|
+         xml.response do
+           xml.from_reaumur output["from_reaumur"]
+           xml.to_kelvin output["to_kelvin"]
+         end 
+       end
+        
+       content_type "text/xml"
+       builder.to_xml.to_s
+    end
+  end
+end
+
+get "/reaumur-to-fahrenheit/:name/?:format?" do
+  unless params[:format]
+    ((((params[:name].to_f)*9)/4.0) + 32).round(2).to_s
+  else
+    if params[:format] == "json"
+      {"from_reaumur" => params[:name].to_f.round(2).to_s , "to_fahrenheit" => ((((params[:name].to_f)*9)/4.0) + 32).round(2).to_s }.to_json
+    elsif params[:format] == "xml"
+      output = {"from_reaumur" => params[:name].to_f.round(2).to_s , "to_fahrenheit" =>  ((((params[:name].to_f)*9)/4.0) + 32).round(2).to_s }
+      builder = Nokogiri::XML::Builder.new do |xml|
+         xml.response do
+           xml.from_reaumur output["from_reaumur"]
+           xml.to_fahrenheit output["to_fahrenheit"]
+         end 
+       end
+        
+       content_type "text/xml"
+       builder.to_xml.to_s
+    end
+  end
+end
+
+get "/reaumur-to-celsius/:name/?:format?" do
+  unless params[:format]
+    (((params[:name].to_f)*5)/4.0).round(2).to_s
+  else
+    if params[:format] == "json"
+      {"from_reaumur" => params[:name].to_f.round(2).to_s , "to_celsius" =>  (((params[:name].to_f)*5)/4.0).round(2).to_s }.to_json
+    elsif params[:format] == "xml"
+      output = {"from_reaumur" => params[:name].to_f.round(2).to_s , "to_celsius" =>  (((params[:name].to_f)*5)/4.0).round(2).to_s }
+      builder = Nokogiri::XML::Builder.new do |xml|
+         xml.response do
+           xml.from_reaumur output["from_reaumur"]
+           xml.to_celsius output["to_celsius"]
+         end 
+       end
+        
+       content_type "text/xml"
+       builder.to_xml.to_s
+    end
+  end
+end
+
+get "/kelvin-to-reaumur/:name/?:format?" do
+  unless params[:format]
+    ((((params[:name].to_f) -273.15)*4.0)/5).round(2).to_s
+  else
+    if params[:format] == "json"
+      {"from_kelvin" => params[:name].to_f.round(2).to_s , "to_reaumur" =>  ((((params[:name].to_f) -273.15)*4.0)/5).round(2).to_s }.to_json
+    elsif params[:format] == "xml"
+      output = {"from_kelvin" => params[:name].to_f.round(2).to_s , "to_reaumur" =>  ((((params[:name].to_f) -273.15)*4.0)/5).round(2).to_s }
+      builder = Nokogiri::XML::Builder.new do |xml|
+         xml.response do
+           xml.from_kelvin output["from_kelvin"]
+           xml.to_reaumur output["to_reaumur"]
+         end 
+       end
+        
+       content_type "text/xml"
+       builder.to_xml.to_s
+    end
+  end
+end
+
+get "/celsius-to-reaumur/:name/?:format?" do
+  unless params[:format]
+    ((((params[:name].to_f))*4.0)/5).round(2).to_s
+  else
+    if params[:format] == "json"
+      {"from_celsius" => params[:name].to_f.round(2).to_s , "to_reaumur" =>  ((((params[:name].to_f) -273.15)*4.0)/5).round(2).to_s }.to_json
+    elsif params[:format] == "xml"
+      output = {"from_celsius" => params[:name].to_f.round(2).to_s , "to_reaumur" =>  ((((params[:name].to_f) -273.15)*4.0)/5).round(2).to_s }
+      builder = Nokogiri::XML::Builder.new do |xml|
+         xml.response do
+           xml.from_celsius output["from_celsius"]
+           xml.to_reaumur output["to_reaumur"]
+         end 
+       end
+        
+       content_type "text/xml"
+       builder.to_xml.to_s
+    end
+  end
+end
+get "/fahrenheit-to-reaumur/:name/?:format?" do
+  unless params[:format]
+    (((((params[:name].to_f))-32)*4.0)/9).round(2).to_s
+  else
+    if params[:format] == "json"
+      {"from_fahrenheit" => params[:name].to_f.round(2).to_s , "to_reaumur" =>   (((((params[:name].to_f))-32)*4.0)/9).round(2).to_s}.to_json
+    elsif params[:format] == "xml"
+      output = {"from_fahrenheit" => params[:name].to_f.round(2).to_s , "to_reaumur" =>  (((((params[:name].to_f))-32)*4.0)/9).round(2).to_s }
+      builder = Nokogiri::XML::Builder.new do |xml|
+         xml.response do
+           xml.from_fahrenheit output["from_fahrenheit"]
+           xml.to_reaumur output["to_reaumur"]
          end 
        end
         
