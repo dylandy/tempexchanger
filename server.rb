@@ -33,12 +33,12 @@ end
 
 get "/celsius-to-kelvin/:degree/?:format?" do
   unless params[:format]
-    (params["name"].to_f + 273.15).round(2).to_s
+    (params[:degree].to_f + 273.15).round(2).to_s
   else
     if params[:format] == "json"
-      {"from_celsius" => params[:degree].to_f.round(2).to_s , "to_kelvin" => (params["name"].to_f + 273.15).round(2).to_s}.to_json
+      {"from_celsius" => params[:degree].to_f.round(2).to_s , "to_kelvin" => (params[:degree].to_f + 273.15).round(2).to_s}.to_json
     elsif params[:format] == "xml"
-      output = { "from_celsius" => params[:degree].to_f.round(2).to_s , "to_kelvin" => (params["name"].to_f + 273.15).round(2).to_s }
+      output = { "from_celsius" => params[:degree].to_f.round(2).to_s , "to_kelvin" => (params[:degree].to_f + 273.15).round(2).to_s }
        builder = Nokogiri::XML::Builder.new do |xml|
          xml.response do
            xml.from_celsius output["from_celsius"]
@@ -55,12 +55,12 @@ end
 
 get "/celsius-to-fahrenheit/:degree/?:format?" do
   unless params[:format]
-    (((params["name"].to_i *  9) / 5) + 32).round(2).to_s
+    (((params[:degree].to_i *  9) / 5) + 32).round(2).to_s
   else
     if params[:format] == "json"
-      {"form_celsius" => params[:degree].to_f.round(2).to_s , "to_fahrenheit" => (((params["name"].to_i *  9) / 5) + 32).round(2).to_s }.to_json
+      {"from_celsius" => params[:degree].to_f.round(2).to_s , "to_fahrenheit" => (((params[:degree].to_i *  9) / 5) + 32).round(2).to_s }.to_json
     elsif params[:format] == "xml"
-       output = {"from_celsius" => params[:degree].to_f.round(2).to_s , "to_fahrenheit" => (((params["name"].to_i *  9) / 5) + 32).round(2).to_s }
+       output = {"from_celsius" => params[:degree].to_f.round(2).to_s , "to_fahrenheit" => (((params[:degree].to_i *  9) / 5) + 32).round(2).to_s }
        builder = Nokogiri::XML::Builder.new do |xml|
          xml.response do
            xml.from_celsius output["from_celsius"]
@@ -78,12 +78,12 @@ end
 
 get "/fahrenheit-to-celsius/:degree/?:format?" do
   unless params[:format]
-   (((params["name"].to_f - 32 ) * 5) / 9).round(2).to_s
+   (((params[:degree].to_f - 32 ) * 5) / 9).round(2).to_s
   else
     if params[:format] == "json"
-      {"from_fahrenheit" => params[:degree].to_f.round(2).to_s , "to_celsius" => (((params["name"].to_f - 32 ) * 5) / 9).round(2).to_s }.to_json
+      {"from_fahrenheit" => params[:degree].to_f.round(2).to_s , "to_celsius" => (((params[:degree].to_f - 32 ) * 5) / 9).round(2).to_s }.to_json
     elsif params[:format] == "xml"
-      output = {"from_fahrenheit" => params[:degree].to_f.round(2).to_s , "to_celsius" => (((params["name"].to_f - 32 ) * 5) / 9).round(2).to_s }
+      output = {"from_fahrenheit" => params[:degree].to_f.round(2).to_s , "to_celsius" => (((params[:degree].to_f - 32 ) * 5) / 9).round(2).to_s }
       builder = Nokogiri::XML::Builder.new do |xml|
          xml.response do
            xml.from_fahrenheit output["from_fahrenheit"]
@@ -100,12 +100,12 @@ end
 
 get "/kelvin-to-fahrenheit/:degree/?:format?" do
   unless params[:format] 
-    (((params["name"].to_f * 9) / 5) - 459.67).round(2).to_s
+    (((params[:degree].to_f * 9) / 5) - 459.67).round(2).to_s
   else
     if params[:format] == "json"
-      {"from_kelvin" => params[:degree].to_f.round(2).to_s , "to_fahrenheit" => (((params["name"].to_f * 9) / 5) - 459.67).round(2).to_s }.to_json
+      {"from_kelvin" => params[:degree].to_f.round(2).to_s , "to_fahrenheit" => (((params[:degree].to_f * 9) / 5) - 459.67).round(2).to_s }.to_json
     elsif params[:format] == "xml"
-      output = {"from_kelvin" => params[:degree].to_f.round(2).to_s , "to_fahrenheit" => (((params["name"].to_f * 9) / 5) - 459.67).round(2).to_s }
+      output = {"from_kelvin" => params[:degree].to_f.round(2).to_s , "to_fahrenheit" => (((params[:degree].to_f * 9) / 5) - 459.67).round(2).to_s }
       builder = Nokogiri::XML::Builder.new do |xml|
          xml.response do
            xml.from_kelvin output["from_kelvin"]
@@ -121,12 +121,12 @@ end
 
 get "/fahrenheit-to-kelvin/:degree/?:format?" do
   unless params[:format]
-    (((params["name"].to_f + 459.67) * 5) / 9).round(2).to_s
+    (((params[:degree].to_f + 459.67) * 5) / 9).round(2).to_s
   else
     if params[:format] == "json"
-      {"from_fahrenheit" => params[:degree].to_f.round(2).to_s , "to_kelvin" => (((params["name"].to_f + 459.67) * 5) / 9).round(2).to_s }.to_json
+      {"from_fahrenheit" => params[:degree].to_f.round(2).to_s , "to_kelvin" => (((params[:degree].to_f + 459.67) * 5) / 9).round(2).to_s }.to_json
     elsif params[:format] == "xml"
-      output = {"from_fahrenheit" => params[:degree].to_f.round(2).to_s , "to_kelvin" => (((params["name"].to_f + 459.67) * 5) / 9).round(2).to_s }
+      output = {"from_fahrenheit" => params[:degree].to_f.round(2).to_s , "to_kelvin" => (((params[:degree].to_f + 459.67) * 5) / 9).round(2).to_s }
       builder = Nokogiri::XML::Builder.new do |xml|
          xml.response do
            xml.from_fahrenheit output["from_fahrenheit"]
